@@ -18,8 +18,9 @@ fn main() {
                 .takes_value(true),
         )
         .arg(
-            Arg::with_name("socket")
-                .short("s")
+            Arg::with_name("tm")
+                .long("thread-mapping")
+                .short("t")
                 .takes_value(true)
                 .possible_values(&["sequential", "interleave"])
                 .help("Do you want to interleave over sockets or allocate sequential"),
@@ -35,8 +36,7 @@ fn main() {
 
     let cores = value_t!(matches, "cores", usize).unwrap_or_else(|e| e.exit());
     let no_ht = matches.is_present("noht");
-
-    let thread_mapping = match matches.value_of("threads").unwrap_or("interleave") {
+    let thread_mapping = match matches.value_of("tm").unwrap_or("interleave") {
         "interleave" => ThreadMapping::Interleave,
         "sequential" => ThreadMapping::Sequential,
         _ => unreachable!(),
