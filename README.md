@@ -1,8 +1,6 @@
 # corealloc
 
-Figures out which core-ids to pin your program to:
-
-Allocate 12 cores, as close together as possible:
+Figures out which core-ids to pin your program to.
 
 ## Installation
 
