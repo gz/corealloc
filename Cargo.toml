@@ -1,0 +1,13 @@
+[package]
+name = "corealloc"
+version = "0.1.0"
+authors = ["Gerd Zellweger <mail@gerdzellweger.com>"]
+edition = "2018"
+
+description = "Helper CLI utility decide on core allocation on the current system"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+
+[dependencies]
+hwloc = "0.5"
+clap = { version = "2", features = ["yaml"] }
