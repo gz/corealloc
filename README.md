@@ -18,14 +18,14 @@ Socket 1: ( 14 42 15 43 16 44 17 45 18 46 19 47 20 48 21 49 22 50 23 51 24 52 25
 ```
 
 ```bash
-corealloc -c 12 -t sequential
+corealloc -c 56 -t sequential
 0 1 2 3 4 5 6 7 8 9 10 11 12 13 28 29 30 31 32 33 34 35 36 37 38 39 40 41 14 15 16 17 18 19 20 21 22 23 24 25 26 27 42 43 44 45 46 47 48 49 50 51 52 53 54 55 
 ```
 
-Allocate 12 cores, spread out over multiple sockets, if possible:
+Allocate 56 cores, spread out over multiple sockets, if possible:
 
 ```bash
-corealloc -c 12 -t interleave
+corealloc -c 56 -t interleave
 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 
 ```
 
