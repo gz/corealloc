@@ -4,6 +4,7 @@ mod topology;
 use topology::*;
 
 fn main() {
+    let _r = env_logger::try_init();
     let args = std::env::args();
     let matches = App::new("Core allocation")
         .version(crate_version!())
