@@ -23,6 +23,10 @@ pub enum ThreadMapping {
     /// Spread thread allocation out across sockets (as much as possible).
     #[allow(unused)]
     Interleave,
+    /// Allocate equal number of cores from each node;
+    /// all cores from a node is allocated together.
+    #[allow(unused)]
+    RoundRobin,
 }
 
 impl fmt::Display for ThreadMapping {
@@ -31,6 +35,7 @@ impl fmt::Display for ThreadMapping {
             ThreadMapping::None => write!(f, "None"),
             ThreadMapping::Sequential => write!(f, "Sequential"),
             ThreadMapping::Interleave => write!(f, "Interleave"),
+            ThreadMapping::RoundRobin => write!(f, "RoundRobin"),
         }
     }
 }
@@ -41,6 +46,7 @@ impl fmt::Debug for ThreadMapping {
             ThreadMapping::None => write!(f, "TM=None"),
             ThreadMapping::Sequential => write!(f, "TM=Sequential"),
             ThreadMapping::Interleave => write!(f, "TM=Interleave"),
+            ThreadMapping::RoundRobin => write!(f, "TM=RoundRobin"),
         }
     }
 }
@@ -212,6 +218,28 @@ impl MachineTopology {
                     }
                 });
                 let c = cpus.iter().take(how_many).map(|c| *c).collect();
+                c
+            }
+
+            ThreadMapping::RoundRobin => {
+                let mut c = Vec::with_capacity(how_many);
+                let sockets = self.sockets();
+                let num_sockets = sockets.len();
+                // Allocate 1 or a muliple of number of sockets.
+                if how_many != 1 {
+                    assert!(how_many % num_sockets == 0);
+                }
+                let per_socket = how_many / num_sockets;
+                for socket in &sockets {
+                    let mut cpus = self.cpus_on_socket(*socket);
+                    if !use_ht {
+                        cpus.sort_by_key(|c| c.core);
+                        cpus.dedup_by(|a, b| a.core == b.core);
+                    }
+
+                    let mut cores = cpus.iter().take(per_socket).map(|core| **core).collect();
+                    c.append(&mut cores);
+                }
                 c
             }
         }
