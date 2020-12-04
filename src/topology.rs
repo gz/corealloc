@@ -228,6 +228,9 @@ impl MachineTopology {
                 // Allocate 1 or a muliple of number of sockets.
                 if how_many != 1 {
                     assert!(how_many % num_sockets == 0);
+                } else {
+                    c.push(cpus[0]);
+                    return c;
                 }
                 let per_socket = how_many / num_sockets;
                 for socket in &sockets {
