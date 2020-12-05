@@ -23,7 +23,7 @@ fn main() {
                 .long("thread-mapping")
                 .short("t")
                 .takes_value(true)
-                .possible_values(&["sequential", "interleave"])
+                .possible_values(&["sequential", "interleave", "roundrobin"])
                 .help("Do you want to interleave over sockets or allocate sequential"),
         )
         .arg(
@@ -40,6 +40,7 @@ fn main() {
     let thread_mapping = match matches.value_of("tm").unwrap_or("interleave") {
         "interleave" => ThreadMapping::Interleave,
         "sequential" => ThreadMapping::Sequential,
+        "roundrobin" => ThreadMapping::RoundRobin,
         _ => unreachable!(),
     };
     let mt = MachineTopology::new();
