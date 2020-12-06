@@ -1,7 +1,7 @@
 [package]
 name = "corealloc"
-version = "0.3.0"
-authors = ["Gerd Zellweger <mail@gerdzellweger.com>"]
+version = "0.4.0"
+authors = ["Gerd Zellweger <mail@gerdzellweger.com>", "Ankit Bhardwaj <ankit-iitb@users.noreply.github.com>"]
 edition = "2018"
 
 description = "Helper CLI utility decide on core allocation on the current system"
