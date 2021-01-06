@@ -1,6 +1,6 @@
 [package]
 name = "corealloc"
-version = "0.4.0"
+version = "0.5.0"
 authors = ["Gerd Zellweger <mail@gerdzellweger.com>", "Ankit Bhardwaj <ankit-iitb@users.noreply.github.com>"]
 edition = "2018"
 
@@ -9,7 +9,7 @@ license = "MIT OR Apache-2.0"
 readme = "README.md"
 
 [dependencies]
-hwloc = "0.5"
+hwloc2 = "2.2"
 clap = { version = "2", features = ["yaml"] }
 log = "0.4"
 env_logger = "0.7"

@@ -37,12 +37,6 @@ checksum = "f8aac770f1885fd7e387acedd76065302551364496e46b3dd00860b2f8359b9d"
 
 [[package]]
 name = "bitflags"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aad18937a628ec6abcd26d1489012cc0e18c21798210f491af69ded9b881106d"
-
-[[package]]
-name = "bitflags"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
@@ -61,7 +55,7 @@ checksum = "5067f5bb2d80ef5d68b4c87db81601f0b75bca627bc2ef76b141d7b846a3c6d9"
 dependencies = [
  "ansi_term",
  "atty",
- "bitflags 1.2.1",
+ "bitflags",
  "strsim",
  "textwrap",
  "unicode-width",
@@ -75,7 +69,7 @@ version = "0.4.0"
 dependencies = [
  "clap",
  "env_logger",
- "hwloc",
+ "hwloc2",
  "log",
 ]
 
@@ -138,12 +132,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "hwloc"
-version = "0.5.0"
+name = "hwloc2"
+version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2934f84993b8b4bcae9b6a4e5f0aca638462dda9c7b4f26a570241494f21e0f4"
+checksum = "0f2a4b6f52a58293f5a69375e8bedfc53b15e439f751d9d20a62689632fe348e"
 dependencies = [
- "bitflags 0.7.0",
+ "bitflags",
  "errno",
  "kernel32-sys",
  "libc",
