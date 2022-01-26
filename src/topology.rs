@@ -3,6 +3,7 @@
 use std::fmt;
 
 use hwloc2::*;
+use serde::Serialize;
 
 pub type Node = u64;
 pub type Socket = u64;
@@ -13,7 +14,7 @@ pub type L2 = u64;
 pub type L3 = u64;
 
 /// The strategy how threads are allocated in the system.
-#[derive(Copy, Clone, Eq, PartialEq)]
+#[derive(Serialize, Copy, Clone, Eq, PartialEq)]
 pub enum ThreadMapping {
     /// Don't do any pinning.
     #[allow(unused)]

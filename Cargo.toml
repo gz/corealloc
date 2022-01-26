@@ -13,3 +13,4 @@ hwloc2 = "2.2"
 clap = { version = "2", features = ["yaml"] }
 log = "0.4"
 env_logger = "0.7"
+serde = { version = "1.0.136", features = ["derive"] }
