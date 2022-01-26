@@ -1,6 +1,6 @@
 [package]
 name = "corealloc"
-version = "0.5.0"
+version = "0.6.0"
 authors = ["Gerd Zellweger <mail@gerdzellweger.com>", "Ankit Bhardwaj <ankit-iitb@users.noreply.github.com>"]
 edition = "2018"
 
